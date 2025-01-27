@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form to Google Sheets</title>
+    <title>Form to Google Sheets2</title>
     <script>
         async function handleSubmit(event) {
             event.preventDefault();
@@ -13,8 +13,7 @@
             const response = await fetch("https://script.google.com/macros/s/AKfycbwB-HK4hQMgQeTwYDXkBLS8T8hs4_JLDDsuDgRxgLKgMzA7RxlMaoPvZ1grfP0J6w2s8w/exec", {
                 method: "POST",
                 body: JSON.stringify({
-                    name: data.get("name"),
-                    email: data.get("email"),
+                    name: data.get("name"),                    
                     message: data.get("message")
                 }),
                 headers: {
@@ -33,8 +32,6 @@
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br><br>
         
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br><br>
         
         <label for="message">Message:</label><br>
         <textarea id="message" name="message" rows="4" required></textarea><br><br>
