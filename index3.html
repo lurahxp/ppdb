@@ -1,0 +1,31 @@
+document.getElementById('myForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    fetch('https://script.google.com/macros/s/AKfycbwB-HK4hQMgQeTwYDXkBLS8T8hs4_JLDDsuDgRxgLKgMzA7RxlMaoPvZ1grfP0J6w2s8w/exec', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.text(); // Baca respons sebagai teks
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    })
+    .then(result => {
+        console.log('Success:', result);
+        alert('Form submitted successfully!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred: ' + error.message);
+    });
+});
