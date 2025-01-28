@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Example</title>
+</head>
+<body>
+    <h1>Form Example7</h1>
+    <form id="myForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message"></textarea><br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
 document.getElementById('myForm').addEventListener('submit', function(event) {
     event.preventDefault();
     const formData = new FormData(this);
@@ -29,3 +49,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
         alert('An error occurred: ' + error.message);
     });
 });
+        
+    </script>
+</body>
+</html>
