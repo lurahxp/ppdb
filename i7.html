@@ -57,9 +57,10 @@
             showNotification('Submit button clicked!');
             
             try {
-                await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
-                showNotification('Data sedang diproses...');
+                
+                showNotification('Data sedang diproses...');                
                 await fetch(getWaURL(document.getElementById('phone').value));
+                await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
                 window.location.href = googleURL;
                 showNotification('Data berhasil disimpan!');
                 form.reset();
