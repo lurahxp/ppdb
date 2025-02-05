@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Github to Google Sheets i7 Notif WeA</title>
+    <title>Form Github to Google Sheets i7 Notif WA</title>
     <style>
         #notification {
             display: none;
@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <h1>Form Input i6</h1>
+    <h1>Form Input i7_1</h1>
     <form id="dataForm">
         <label for="name">Nama:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -37,7 +37,9 @@
 
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzKWtlRiJ85CWqneqYQKge6sLkJl3yKfKoyrXYeTPGqlumJqcoyhYe6vDMWC9Jf_qoGww/exec';
-        const waURL = 'https://v15.appsheetindo.my.id/send-media?api_key=JEdzDyvNBrK70jlvZJNA5N5TiAeUAj&sender=62895342438503&number=6281546810693&media_type=image&caption=Helffffflo%20World&url=https://v15.appsheetindo.my.id/storage/files/5/foto_YAYASAN.jpg';
+        function getWaURL(phoneNumber) {
+            return `https://v15.appsheetindo.my.id/send-media?api_key=JEdzDyvNBrK70jlvZJNA5N5TiAeUAj&sender=62895342438503&number=${phoneNumber}&media_type=image&caption=Helffffflo%20World&url=https://v15.appsheetindo.my.id/storage/files/5/foto_YAYASAN.jpg`;
+        }
         const googleURL = 'https://www.google.com';
         const form = document.getElementById('dataForm');
         const notification = document.getElementById('notification');
@@ -57,7 +59,7 @@
             try {
                 await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
                 showNotification('Data sedang diproses...');
-                await fetch(waURL);
+                await fetch(getWaURL(document.getElementById('phone').value));
                 window.location.href = googleURL;
                 showNotification('Data berhasil disimpan!');
                 form.reset();
