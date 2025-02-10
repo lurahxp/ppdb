@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <h1>Form Input i7_2</h1>
+    <h1>Form Input i8 Imeg</h1>
     <form id="dataForm">
         <label for="name">Nama:</label>
         <input type="text" id="name" name="name" required><br><br>
@@ -58,9 +58,13 @@
             
             try {
                 
-                showNotification('Data sedang diproses...');                
-                await fetch(getWaURL(document.getElementById('phone').value, document.getElementById('name').value));
-                await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
+                showNotification('Kirim pesan diproses...');                
+                const waResponse= await fetch(getWaURL(document.getElementById('phone').value, document.getElementById('name').value));
+                    if (!waResponse.ok) throw new Error('Gagal mengirim WA');
+
+                showNotification('Simpan data...');     
+                   const googleResponse= await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
+                if (!googleResponse.ok) throw new Error('Gagal menyimpan ke Google Sheets');
                 window.location.href = googleURL;
                 showNotification('Data berhasil disimpan!');
                 form.reset();
